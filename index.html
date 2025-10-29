@@ -1,1 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>iDevelopers - Web Layout Editor</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="header-content">
+                <div class="logo">
+                    <span class="logo-icon">⚙️</span>
+                    <h1>iDevelopers</h1>
+                </div>
+                <p>Visual Web Layout Editor for Developers</p>
+            </div>
+        </header>
 
+        <div class="main-content">
+            <div class="editor-panel">
+                <h2 class="panel-title">Layout Controls</h2>
+                
+                <div class="control-group">
+                    <h3>Add Elements</h3>
+                    <div class="element-controls">
+                        <div class="element-btn" data-type="header">
+                            <span class="element-icon">H</span>
+                            Header
+                        </div>
+                        <div class="element-btn" data-type="paragraph">
+                            <span class="element-icon">P</span>
+                            Paragraph
+                        </div>
+                        <div class="element-btn" data-type="button">
+                            <span class="element-icon">B</span>
+                            Button
+                        </div>
+                        <div class="element-btn" data-type="image">
+                            <span class="element-icon">IMG</span>
+                            Image
+                        </div>
+                        <div class="element-btn" data-type="divider">
+                            <span class="element-icon">—</span>
+                            Divider
+                        </div>
+                        <div class="element-btn" data-type="container">
+                            <span class="element-icon">□</span>
+                            Container
+                        </div>
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <h3>Page Settings</h3>
+                    <label class="control-label">Page Title</label>
+                    <input type="text" class="control-input" id="page-title" value="My Website">
+                    
+                    <label class="control-label">Background Color</label>
+                    <input type="color" class="control-input color-input" id="page-bg-color" value="#ffffff">
+                    
+                    <label class="control-label">Text Color</label>
+                    <input type="color" class="control-input color-input" id="text-color" value="#333333">
+                </div>
+
+                <div class="control-group">
+                    <h3>Selected Element</h3>
+                    <label class="control-label">Content</label>
+                    <textarea class="control-input" id="element-content" rows="3" placeholder="Enter content here..."></textarea>
+                    
+                    <label class="control-label">Background Color</label>
+                    <input type="color" class="control-input color-input" id="element-bg-color" value="#ffffff">
+                    
+                    <label class="control-label">Text Color</label>
+                    <input type="color" class="control-input color-input" id="element-text-color" value="#333333">
+                    
+                    <label class="control-label">Padding</label>
+                    <div class="slider-container">
+                        <input type="range" class="control-slider" id="element-padding" min="0" max="50" value="10">
+                        <span id="padding-value">10px</span>
+                    </div>
+                    
+                    <div class="button-group">
+                        <button class="btn btn-primary" id="update-element">Update Element</button>
+                        <button class="btn btn-danger" id="delete-element">Delete Element</button>
+                    </div>
+                </div>
+
+                <div class="button-group">
+                    <button class="btn btn-success" id="generate-code">Generate HTML Code</button>
+                    <button class="btn btn-secondary" id="reset-layout">Reset Layout</button>
+                </div>
+            </div>
+
+            <div class="preview-panel">
+                <div class="preview-container">
+                    <h2 class="panel-title">Live Preview</h2>
+                    <div class="preview-area" id="preview-area">
+                        <!-- Preview elements will be added here dynamically -->
+                        <div class="empty-state">
+                            <p>Click on the element buttons to start building your layout</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="code-container">
+                    <div class="code-header">
+                        <h2 class="panel-title">Generated Code</h2>
+                        <button class="btn btn-small" id="copy-code">Copy Code</button>
+                    </div>
+                    <div class="code-block" id="generated-code">
+                        <!-- Generated code will appear here -->
+                        <p class="code-placeholder">Your generated HTML code will appear here after clicking "Generate HTML Code"</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p>iDevelopers &copy; 2023 - Visual Web Development Tool</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
