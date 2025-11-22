@@ -3,125 +3,152 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>iDevelopers - Web Layout Editor</title>
-    <link rel="stylesheet" href="style.css">
+    <title>iPrincesses - Find Your Perfect Match</title>
+    
+    <!-- External Stylesheets -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-storage-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
 </head>
 <body>
-    <div class="container">
-        <header>
+    <!-- Header -->
+    <header>
+        <div class="container">
             <div class="header-content">
-                <div class="logo">
-                    <span class="logo-icon">⚙️</span>
-                    <h1>iDevelopers</h1>
-                </div>
-                <p>Visual Web Layout Editor for Developers</p>
-            </div>
-        </header>
-
-        <div class="main-content">
-            <div class="editor-panel">
-                <h2 class="panel-title">Layout Controls</h2>
-                
-                <div class="control-group">
-                    <h3>Add Elements</h3>
-                    <div class="element-controls">
-                        <div class="element-btn" data-type="header">
-                            <span class="element-icon">H</span>
-                            Header
-                        </div>
-                        <div class="element-btn" data-type="paragraph">
-                            <span class="element-icon">P</span>
-                            Paragraph
-                        </div>
-                        <div class="element-btn" data-type="button">
-                            <span class="element-icon">B</span>
-                            Button
-                        </div>
-                        <div class="element-btn" data-type="image">
-                            <span class="element-icon">IMG</span>
-                            Image
-                        </div>
-                        <div class="element-btn" data-type="divider">
-                            <span class="element-icon">—</span>
-                            Divider
-                        </div>
-                        <div class="element-btn" data-type="container">
-                            <span class="element-icon">□</span>
-                            Container
-                        </div>
-                    </div>
-                </div>
-
-                <div class="control-group">
-                    <h3>Page Settings</h3>
-                    <label class="control-label">Page Title</label>
-                    <input type="text" class="control-input" id="page-title" value="My Website">
+                <div class="header-left">
+                    <button class="mobile-menu-btn" id="mobile-menu-btn">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
                     
-                    <label class="control-label">Background Color</label>
-                    <input type="color" class="control-input color-input" id="page-bg-color" value="#ffffff">
-                    
-                    <label class="control-label">Text Color</label>
-                    <input type="color" class="control-input color-input" id="text-color" value="#333333">
-                </div>
-
-                <div class="control-group">
-                    <h3>Selected Element</h3>
-                    <label class="control-label">Content</label>
-                    <textarea class="control-input" id="element-content" rows="3" placeholder="Enter content here..."></textarea>
-                    
-                    <label class="control-label">Background Color</label>
-                    <input type="color" class="control-input color-input" id="element-bg-color" value="#ffffff">
-                    
-                    <label class="control-label">Text Color</label>
-                    <input type="color" class="control-input color-input" id="element-text-color" value="#333333">
-                    
-                    <label class="control-label">Padding</label>
-                    <div class="slider-container">
-                        <input type="range" class="control-slider" id="element-padding" min="0" max="50" value="10">
-                        <span id="padding-value">10px</span>
-                    </div>
-                    
-                    <div class="button-group">
-                        <button class="btn btn-primary" id="update-element">Update Element</button>
-                        <button class="btn btn-danger" id="delete-element">Delete Element</button>
-                    </div>
-                </div>
-
-                <div class="button-group">
-                    <button class="btn btn-success" id="generate-code">Generate HTML Code</button>
-                    <button class="btn btn-secondary" id="reset-layout">Reset Layout</button>
-                </div>
-            </div>
-
-            <div class="preview-panel">
-                <div class="preview-container">
-                    <h2 class="panel-title">Live Preview</h2>
-                    <div class="preview-area" id="preview-area">
-                        <!-- Preview elements will be added here dynamically -->
-                        <div class="empty-state">
-                            <p>Click on the element buttons to start building your layout</p>
-                        </div>
+                    <div class="logo-container">
+                        <div class="logo">iP</div>
+                        <div class="logo-text">i<span>Princesses</span></div>
                     </div>
                 </div>
                 
-                <div class="code-container">
-                    <div class="code-header">
-                        <h2 class="panel-title">Generated Code</h2>
-                        <button class="btn btn-small" id="copy-code">Copy Code</button>
+                <nav>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#princesses">Princesses</a></li>
+                        <li><a href="#premium">Premium</a></li>
+                        <li><a href="#pricing">Pricing</a></li>
+                        <li><a href="#services">Services</a></li>
+                    </ul>
+                </nav>
+                
+                <div class="header-right">
+                    <div class="search-icon" id="search-icon">
+                        <i class="fas fa-search"></i>
                     </div>
-                    <div class="code-block" id="generated-code">
-                        <!-- Generated code will appear here -->
-                        <p class="code-placeholder">Your generated HTML code will appear here after clicking "Generate HTML Code"</p>
+                    <div class="auth-buttons" id="auth-buttons">
+                        <button class="btn btn-primary" id="login-btn">Login</button>
+                        <button class="btn btn-outline" id="signup-btn">Sign Up</button>
+                    </div>
+                    
+                    <div class="user-info" id="user-info">
+                        <div class="user-avatar" id="user-avatar">U</div>
+                        <div class="user-name" id="user-name">User</div>
+                        <button class="btn btn-outline" id="logout-btn">Logout</button>
                     </div>
                 </div>
+                
+                <!-- Mobile Menu -->
+                <div class="mobile-menu" id="mobile-menu">
+                    <button class="menu-close" id="menu-close">
+                        <i class="fas fa-times"></i>
+                    </button>
+                    <ul>
+                        <li><a href="#home" class="menu-link">Home</a></li>
+                        <li><a href="#princesses" class="menu-link">Princesses</a></li>
+                        <li><a href="#premium" class="menu-link">Premium</a></li>
+                        <li><a href="#pricing" class="menu-link">Pricing</a></li>
+                        <li><a href="#services" class="menu-link">Services</a></li>
+                        <li><a href="#about" class="menu-link">About Us</a></li>
+                        <li><a href="#contact" class="menu-link">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="menu-overlay" id="menu-overlay"></div>
             </div>
         </div>
+    </header>
 
-        <footer>
-            <p>iDevelopers &copy; 2023 - Visual Web Development Tool</p>
-        </footer>
+    <!-- Success Message -->
+    <div class="success-message" id="success-message">
+        <i class="fas fa-check-circle"></i> Welcome to iPrincesses!
     </div>
 
-    <script src="script.js"></script>
+    <!-- Authentication Modals -->
+    <div class="modal" id="login-modal">
+        <!-- Login modal content -->
+    </div>
+
+    <div class="modal" id="signup-modal">
+        <!-- Signup modal content -->
+    </div>
+
+    <div class="modal" id="verification-modal">
+        <!-- Verification modal content -->
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <!-- Hero content -->
+    </section>
+
+    <!-- Search Section -->
+    <section class="search-section">
+        <!-- Search content -->
+    </section>
+
+    <!-- Features Section -->
+    <section class="container">
+        <!-- Features content -->
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="pricing" id="pricing">
+        <!-- Pricing content -->
+    </section>
+
+    <!-- Premium Section -->
+    <section class="pricing" id="premium">
+        <!-- Premium content -->
+    </section>
+
+    <!-- Services Section -->
+    <section class="pricing" id="services">
+        <!-- Services content -->
+    </section>
+
+    <!-- About Us Section -->
+    <section class="pricing" id="about">
+        <!-- About content -->
+    </section>
+
+    <!-- Princesses Section -->
+    <section class="princesses container" id="princesses">
+        <!-- Princesses content -->
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <!-- Footer content -->
+    </footer>
+
+    <!-- Floating Call Button -->
+    <a href="tel:+256703055329" class="floating-call">
+        <i class="fas fa-phone"></i>
+    </a>
+
+    <!-- External JavaScript -->
+    <script src="app.js"></script>
 </body>
 </html>
