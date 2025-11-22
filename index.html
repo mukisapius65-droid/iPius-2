@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>iPrincesses - Find Your Perfect Match</title>
+    <meta name="description" content="iPrincesses connects you with beautiful, elegant companions for any occasion. Browse our verified princesses and find your perfect match today.">
+    
+    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <!-- Firebase SDK -->
@@ -12,7 +15,8 @@
     <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-storage-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
     
-  
+    <!-- CSS Styles -->
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <!-- Header -->
@@ -20,19 +24,19 @@
         <div class="container">
             <div class="header-content">
                 <div class="header-left">
-                    <button class="mobile-menu-btn" id="mobile-menu-btn">
+                    <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Toggle mobile menu">
                         <span></span>
                         <span></span>
                         <span></span>
                     </button>
                     
                     <div class="logo-container">
-                        <div class="logo">iP</div>
+                        <div class="logo" aria-hidden="true">iP</div>
                         <div class="logo-text">i<span>Princesses</span></div>
                     </div>
                 </div>
                 
-                <nav>
+                <nav aria-label="Main navigation">
                     <ul>
                         <li><a href="#home">Home</a></li>
                         <li><a href="#princesses">Princesses</a></li>
@@ -43,8 +47,8 @@
                 </nav>
                 
                 <div class="header-right">
-                    <div class="search-icon" id="search-icon">
-                        <i class="fas fa-search"></i>
+                    <div class="search-icon" id="search-icon" role="button" aria-label="Open search">
+                        <i class="fas fa-search" aria-hidden="true"></i>
                     </div>
                     <div class="auth-buttons" id="auth-buttons">
                         <button class="btn btn-primary" id="login-btn">Login</button>
@@ -52,15 +56,15 @@
                     </div>
                     
                     <div class="user-info" id="user-info">
-                        <div class="user-avatar" id="user-avatar">U</div>
+                        <div class="user-avatar" id="user-avatar" aria-hidden="true">U</div>
                         <div class="user-name" id="user-name">User</div>
                         <button class="btn btn-outline" id="logout-btn">Logout</button>
                     </div>
                 </div>
                 
-                <div class="mobile-menu" id="mobile-menu">
-                    <button class="menu-close" id="menu-close">
-                        <i class="fas fa-times"></i>
+                <div class="mobile-menu" id="mobile-menu" aria-hidden="true" aria-label="Mobile menu">
+                    <button class="menu-close" id="menu-close" aria-label="Close menu">
+                        <i class="fas fa-times" aria-hidden="true"></i>
                     </button>
                     <ul>
                         <li><a href="#home" class="menu-link">Home</a></li>
@@ -73,28 +77,28 @@
                     </ul>
                 </div>
                 
-                <div class="menu-overlay" id="menu-overlay"></div>
+                <div class="menu-overlay" id="menu-overlay" aria-hidden="true"></div>
             </div>
         </div>
     </header>
 
     <!-- Success Message -->
-    <div class="success-message" id="success-message">
-        <i class="fas fa-check-circle"></i> Welcome to iPrincesses!
+    <div class="success-message" id="success-message" role="alert" aria-live="polite">
+        <i class="fas fa-check-circle" aria-hidden="true"></i> Welcome to iPrincesses!
     </div>
 
     <!-- Login Modal -->
-    <div class="modal" id="login-modal">
+    <div class="modal" id="login-modal" role="dialog" aria-labelledby="login-title" aria-hidden="true">
         <div class="modal-content">
-            <span class="close-modal" id="close-login">&times;</span>
-            <h2 class="modal-title">Login</h2>
+            <button class="close-modal" id="close-login" aria-label="Close login modal">&times;</button>
+            <h2 class="modal-title" id="login-title">Login</h2>
             
             <div class="social-login">
                 <button class="social-btn google" id="google-login">
-                    <i class="fab fa-google"></i> Continue with Google
+                    <i class="fab fa-google" aria-hidden="true"></i> Continue with Google
                 </button>
                 <button class="social-btn facebook" id="facebook-login">
-                    <i class="fab fa-facebook-f"></i> Continue with Facebook
+                    <i class="fab fa-facebook-f" aria-hidden="true"></i> Continue with Facebook
                 </button>
             </div>
             
@@ -120,17 +124,17 @@
     </div>
 
     <!-- Signup Modal -->
-    <div class="modal" id="signup-modal">
+    <div class="modal" id="signup-modal" role="dialog" aria-labelledby="signup-title" aria-hidden="true">
         <div class="modal-content">
-            <span class="close-modal" id="close-signup">&times;</span>
-            <h2 class="modal-title">Sign Up</h2>
+            <button class="close-modal" id="close-signup" aria-label="Close signup modal">&times;</button>
+            <h2 class="modal-title" id="signup-title">Sign Up</h2>
             
             <div class="social-login">
                 <button class="social-btn google" id="google-signup">
-                    <i class="fab fa-google"></i> Continue with Google
+                    <i class="fab fa-google" aria-hidden="true"></i> Continue with Google
                 </button>
                 <button class="social-btn facebook" id="facebook-signup">
-                    <i class="fab fa-facebook-f"></i> Continue with Facebook
+                    <i class="fab fa-facebook-f" aria-hidden="true"></i> Continue with Facebook
                 </button>
             </div>
             
@@ -164,10 +168,10 @@
     </div>
 
     <!-- Verification Modal -->
-    <div class="modal" id="verification-modal">
+    <div class="modal" id="verification-modal" role="dialog" aria-labelledby="verification-title" aria-hidden="true">
         <div class="modal-content">
-            <span class="close-modal" id="close-verification">&times;</span>
-            <h2 class="modal-title">Verify Your Phone</h2>
+            <button class="close-modal" id="close-verification" aria-label="Close verification modal">&times;</button>
+            <h2 class="modal-title" id="verification-title">Verify Your Phone</h2>
             
             <div class="verification-info">
                 <p>We've sent a 6-digit verification code to <strong id="verification-phone"></strong></p>
@@ -176,12 +180,12 @@
             
             <form class="auth-form" id="verification-form">
                 <div class="code-inputs">
-                    <input type="text" class="code-input" maxlength="1" data-index="0">
-                    <input type="text" class="code-input" maxlength="1" data-index="1">
-                    <input type="text" class="code-input" maxlength="1" data-index="2">
-                    <input type="text" class="code-input" maxlength="1" data-index="3">
-                    <input type="text" class="code-input" maxlength="1" data-index="4">
-                    <input type="text" class="code-input" maxlength="1" data-index="5">
+                    <input type="text" class="code-input" maxlength="1" data-index="0" aria-label="First digit of verification code">
+                    <input type="text" class="code-input" maxlength="1" data-index="1" aria-label="Second digit of verification code">
+                    <input type="text" class="code-input" maxlength="1" data-index="2" aria-label="Third digit of verification code">
+                    <input type="text" class="code-input" maxlength="1" data-index="3" aria-label="Fourth digit of verification code">
+                    <input type="text" class="code-input" maxlength="1" data-index="4" aria-label="Fifth digit of verification code">
+                    <input type="text" class="code-input" maxlength="1" data-index="5" aria-label="Sixth digit of verification code">
                 </div>
                 
                 <input type="hidden" id="verification-code">
@@ -208,14 +212,15 @@
     </section>
 
     <!-- Search Section -->
-    <section class="search-section">
+    <section class="search-section" aria-labelledby="search-title">
         <div class="container">
+            <h2 id="search-title" class="sr-only">Search Princesses</h2>
             <div class="search-container">
                 <div class="search-box">
-                    <input type="text" class="search-input" id="search-input" placeholder="Search princesses by name, location, or services...">
+                    <input type="text" class="search-input" id="search-input" placeholder="Search princesses by name, location, or services..." aria-label="Search princesses">
                     <button class="btn btn-primary" id="search-btn">Search</button>
                 </div>
-                <div class="search-results" id="search-results">
+                <div class="search-results" id="search-results" aria-live="polite">
                     <!-- Search results will appear here -->
                 </div>
             </div>
@@ -223,24 +228,25 @@
     </section>
 
     <!-- Features Section -->
-    <section class="container">
+    <section class="container" aria-labelledby="features-title">
+        <h2 id="features-title" class="sr-only">Our Features</h2>
         <div class="features">
             <div class="feature-card">
-                <div class="feature-icon">
+                <div class="feature-icon" aria-hidden="true">
                     <i class="fas fa-user-shield"></i>
                 </div>
                 <h3>Verified Profiles</h3>
                 <p>All our princesses are carefully verified to ensure authenticity and quality.</p>
             </div>
             <div class="feature-card">
-                <div class="feature-icon">
+                <div class="feature-icon" aria-hidden="true">
                     <i class="fas fa-star"></i>
                 </div>
                 <h3>Premium Selection</h3>
                 <p>We handpick only the most elegant and sophisticated companions.</p>
             </div>
             <div class="feature-card">
-                <div class="feature-icon">
+                <div class="feature-icon" aria-hidden="true">
                     <i class="fas fa-lock"></i>
                 </div>
                 <h3>Discreet & Secure</h3>
@@ -250,9 +256,9 @@
     </section>
 
     <!-- Pricing Section -->
-    <section class="pricing" id="pricing">
+    <section class="pricing" id="pricing" aria-labelledby="pricing-title">
         <div class="container">
-            <h2 class="section-title">Membership Plans</h2>
+            <h2 class="section-title" id="pricing-title">Membership Plans</h2>
             <div class="pricing-plans">
                 <div class="plan">
                     <h3>Basic</h3>
@@ -297,26 +303,26 @@
     </section>
 
     <!-- Premium Section -->
-    <section class="pricing" id="premium">
+    <section class="premium" id="premium" aria-labelledby="premium-title">
         <div class="container">
-            <h2 class="section-title">Premium Features</h2>
+            <h2 class="section-title" id="premium-title">Premium Features</h2>
             <div class="features">
                 <div class="feature-card">
-                    <div class="feature-icon">
+                    <div class="feature-icon" aria-hidden="true">
                         <i class="fas fa-crown"></i>
                     </div>
                     <h3>VIP Access</h3>
                     <p>Get exclusive access to our most premium princesses and services.</p>
                 </div>
                 <div class="feature-card">
-                    <div class="feature-icon">
+                    <div class="feature-icon" aria-hidden="true">
                         <i class="fas fa-concierge-bell"></i>
                     </div>
                     <h3>Personal Concierge</h3>
                     <p>24/7 dedicated support to help you find your perfect match.</p>
                 </div>
                 <div class="feature-card">
-                    <div class="feature-icon">
+                    <div class="feature-icon" aria-hidden="true">
                         <i class="fas fa-shield-alt"></i>
                     </div>
                     <h3>Enhanced Privacy</h3>
@@ -327,26 +333,26 @@
     </section>
 
     <!-- Services Section -->
-    <section class="pricing" id="services">
+    <section class="services" id="services" aria-labelledby="services-title">
         <div class="container">
-            <h2 class="section-title">Our Services</h2>
+            <h2 class="section-title" id="services-title">Our Services</h2>
             <div class="features">
                 <div class="feature-card">
-                    <div class="feature-icon">
+                    <div class="feature-icon" aria-hidden="true">
                         <i class="fas fa-utensils"></i>
                     </div>
                     <h3>Dinner Dates</h3>
                     <p>Elegant companions for fine dining experiences and social events.</p>
                 </div>
                 <div class="feature-card">
-                    <div class="feature-icon">
+                    <div class="feature-icon" aria-hidden="true">
                         <i class="fas fa-plane"></i>
                     </div>
                     <h3>Travel Companions</h3>
                     <p>Beautiful partners for business trips, vacations, and getaways.</p>
                 </div>
                 <div class="feature-card">
-                    <div class="feature-icon">
+                    <div class="feature-icon" aria-hidden="true">
                         <i class="fas fa-glass-cheers"></i>
                     </div>
                     <h3>Event Escorts</h3>
@@ -357,26 +363,26 @@
     </section>
 
     <!-- About Us Section -->
-    <section class="pricing" id="about">
+    <section class="about" id="about" aria-labelledby="about-title">
         <div class="container">
-            <h2 class="section-title">About Us</h2>
+            <h2 class="section-title" id="about-title">About Us</h2>
             <div class="features">
                 <div class="feature-card">
-                    <div class="feature-icon">
+                    <div class="feature-icon" aria-hidden="true">
                         <i class="fas fa-heart"></i>
                     </div>
                     <h3>Our Mission</h3>
                     <p>To create meaningful connections between sophisticated individuals and elegant companions in a safe, discreet environment.</p>
                 </div>
                 <div class="feature-card">
-                    <div class="feature-icon">
+                    <div class="feature-icon" aria-hidden="true">
                         <i class="fas fa-users"></i>
                     </div>
                     <h3>Our Community</h3>
                     <p>We've built a trusted community of verified princesses and discerning clients who value quality and discretion.</p>
                 </div>
                 <div class="feature-card">
-                    <div class="feature-icon">
+                    <div class="feature-icon" aria-hidden="true">
                         <i class="fas fa-award"></i>
                     </div>
                     <h3>Our Standards</h3>
@@ -387,15 +393,15 @@
     </section>
 
     <!-- Princesses Section -->
-    <section class="princesses container" id="princesses">
-        <h2 class="section-title">Our Princesses</h2>
-        <div class="gallery-filters">
+    <section class="princesses container" id="princesses" aria-labelledby="princesses-title">
+        <h2 class="section-title" id="princesses-title">Our Princesses</h2>
+        <div class="gallery-filters" role="group" aria-label="Filter princesses">
             <button class="filter-btn active" data-filter="all">All</button>
             <button class="filter-btn" data-filter="available">Available</button>
             <button class="filter-btn" data-filter="expired">Expired</button>
             <button class="filter-btn" data-filter="unavailable">Unavailable</button>
         </div>
-        <div class="princesses-grid" id="princesses-container">
+        <div class="princesses-grid" id="princesses-container" aria-live="polite">
             <!-- Princesses will be dynamically added here -->
         </div>
     </section>
@@ -408,10 +414,10 @@
                     <h3>iPrincesses</h3>
                     <p>The premier platform for connecting with elegant companions for any occasion.</p>
                     <div class="social-links">
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="https://wa.me/256703055329"><i class="fab fa-whatsapp"></i></a>
-                        <a href="mailto:info@iprincesses.com"><i class="fas fa-envelope"></i></a>
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f" aria-hidden="true"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram" aria-hidden="true"></i></a>
+                        <a href="https://wa.me/256703055329" aria-label="WhatsApp"><i class="fab fa-whatsapp" aria-hidden="true"></i></a>
+                        <a href="mailto:info@iprincesses.com" aria-label="Email"><i class="fas fa-envelope" aria-hidden="true"></i></a>
                     </div>
                 </div>
                 <div class="footer-column">
@@ -429,9 +435,9 @@
                 <div class="footer-column">
                     <h3>Contact Us</h3>
                     <ul>
-                        <li><i class="fas fa-phone"></i> +256 703 055 329</li>
-                        <li><i class="fas fa-envelope"></i> info@iprincesses.com</li>
-                        <li><i class="fab fa-whatsapp"></i> +256 703 055 329</li>
+                        <li><i class="fas fa-phone" aria-hidden="true"></i> +256 703 055 329</li>
+                        <li><i class="fas fa-envelope" aria-hidden="true"></i> info@iprincesses.com</li>
+                        <li><i class="fab fa-whatsapp" aria-hidden="true"></i> +256 703 055 329</li>
                     </ul>
                 </div>
             </div>
@@ -442,10 +448,11 @@
     </footer>
 
     <!-- Floating Call Button -->
-    <a href="tel:+256703055329" class="floating-call">
-        <i class="fas fa-phone"></i>
+    <a href="tel:+256703055329" class="floating-call" aria-label="Call us">
+        <i class="fas fa-phone" aria-hidden="true"></i>
     </a>
 
-    
+    <!-- JavaScript -->
+    <script src="app.js"></script>
 </body>
 </html>
